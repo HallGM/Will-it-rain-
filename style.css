@@ -1,0 +1,74 @@
+body {
+  background-image: url("images/rain-background.jpg");
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+}
+
+p {
+  font-size: small;
+}
+
+h1 {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.list-item-container {
+  width: 100%;
+}
+
+.list-object {
+  font-weight: 200;
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 1px;
+  padding: 5px 10px 5px 10px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+b {
+  font-weight: 400;
+}
+
+.grand-container {
+  max-width: 500px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+}
+
+.error {
+  color: red;
+}
+
+#city {
+  font-size: large;
+  margin: 5px 0 5px 0;
+  display: inline;
+}
+
+#date {
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#change-city-button {
+  display: inline-block;
+}
+
+#change-city-form {
+  display: none;
+}
+
+#umbrella-icon {
+  width: 30px;
+  display: inline-block;
+  float: right;
+  margin-right: 30px;
+}
