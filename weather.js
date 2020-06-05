@@ -8,7 +8,7 @@ class Weather {
     try {
       // fetch the longitude and latitude from city
       const response1 = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${this.apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${this.apiKey}`
       );
       const data1 = await response1.json();
       let longitude = data1.coord.lon;
