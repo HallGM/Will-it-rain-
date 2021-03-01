@@ -1,5 +1,8 @@
+//get city
 const city = storage.city;
+
 let isThereAnError = false;
+let isLoading = true;
 
 //Create new Weather Object
 let weather = new Weather(city);
@@ -62,10 +65,13 @@ const dateToday = (function () {
 
 // fetch weather information from weather API
 function getWeather() {
+  ui.loading();
+
   weather
     .getWeather()
     .then((rainData) => {
-      //only succeed if it doesn't return an error
+      ui.stopLoading();
+      document.getElementById("city-display").style.display = "block";
 
       //extract the useful information from the rain data
       const usefulData = consolidateRainData(rainData);
@@ -98,8 +104,9 @@ function getWeather() {
         }
       });
 
+      isLoading = false;
       //paint to the UI
-      ui.paint(usefulData, dateToday, weather.city);
+      ui.paint(usefulData, dateToday, weather.displayCity);
 
       changeCityForm.style.display = "none";
       changeButton.innerText = "Change";
@@ -107,34 +114,45 @@ function getWeather() {
     .catch((err) => console.log(err));
 }
 
-// listen out for submit form
-const changeCityForm = document.getElementById("change-city-form");
-changeCityForm.style.display = "none";
-changeCityForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  // if input has something in it
-  const changeCityInput = document.getElementById("city-input");
-  if (changeCityInput.value !== "") {
-    //new weather object with new city
-    weather = new Weather(changeCityInput.value);
-
-    //run get weather again with new city
-    getWeather();
-  }
-});
-
 //listen for change button
 const changeButton = document.getElementById("change-city-button");
 changeButton.addEventListener("click", () => {
   if (changeCityForm.style.display === "none") {
     changeCityForm.style.display = "block";
     changeButton.innerText = "Back";
+    ui.removeError();
   } else {
     changeCityForm.style.display = "none";
     changeButton.innerText = "Change";
 
     //if there is an error message, remove it
     ui.removeError();
+  }
+});
+
+// listen out for submit form
+const changeCityForm = document.getElementById("change-city-form");
+changeCityForm.style.display = "none";
+changeCityForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const changeCityInput = document.getElementById("city-input");
+  // if input has something in it
+  if (changeCityInput.value !== "") {
+    //immediate UI changes
+    changeCityForm.style.display = "none";
+    changeButton.innerText = "Change";
+    document.getElementById(
+      "city"
+    ).innerHTML = `<strong>City:</strong> ${changeCityInput.value}`;
+
+    //if there is an error message, remove it
+    ui.removeError();
+
+    //new weather object with new city
+    weather = new Weather(changeCityInput.value);
+
+    //run get weather again with new city
+    getWeather();
   }
 });
 

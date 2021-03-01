@@ -2,6 +2,7 @@ class Weather {
   constructor(city) {
     this.apiKey = "b960b8855735efec164683ab6d8b305d";
     this.city = city;
+    this.displayCity = city;
   }
 
   async getWeather() {
@@ -13,6 +14,8 @@ class Weather {
       const data1 = await response1.json();
       let longitude = data1.coord.lon;
       let latitude = data1.coord.lat;
+
+      this.displayCity = data1.name + ", " + data1.sys.country;
 
       // fetch weather information using longitude and latitude
       const response2 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${this.apiKey}

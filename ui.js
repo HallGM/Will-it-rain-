@@ -5,13 +5,17 @@ const thirdDayTitle = document.getElementById("w-day-after");
 const cityElement = document.getElementById("city");
 const dateElement = document.getElementById("date");
 
+// loading
+const loadingElement = document.getElementById("loading");
+const hideOnLoadingElement = document.getElementById("hide-on-loading");
+
 class UI {
   paint(rainData, date, city) {
     //display third Day
     thirdDayTitle.textContent = date.dayAfter;
 
     //display city
-    cityElement.innerHTML = `<b>City:</b> ${city}`;
+    cityElement.innerHTML = `<strong>City:</strong> ${city}`;
 
     //display today's date
     dateElement.textContent = date.fullDate;
@@ -60,4 +64,16 @@ class UI {
       errorMessage.remove();
     }
   }
+
+  loading() {
+    loadingElement.style.display = "";
+    hideOnLoadingElement.style.display = "none";
+  }
+
+  stopLoading() {
+    loadingElement.style.display = "none";
+    hideOnLoadingElement.style.display = "";
+  }
+
+  cityFullName() {}
 }

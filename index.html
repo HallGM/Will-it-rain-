@@ -18,31 +18,48 @@
   <body>
     <div class="grand-container">
       <h1>Will it rain today?</h1>
-      <div id="date"></div>
       <p>
         The complicated science of meteorology boiled down to one simple
         question...
       </p>
-      <div id="city"></div>
-      <button id="change-city-button" type="button">
-        Change
-      </button>
-      <img id="umbrella-icon" src="images/umbrella-icon.png" />
-      <form id="change-city-form">
-        <input id="city-input" type="text" />
-        <button id="change-city-submit" type="submit">
-          Submit
-        </button>
-      </form>
+      <div id="date"></div>
 
-      <h3 id="w-today">Today</h3>
-      <div class="list-item-container" id="w-rain-today"></div>
+      <div id="city-display">
+        <div id="city"></div>
+        <button id="change-city-button" type="button">Change</button>
+        <img id="umbrella-icon" src="images/umbrella-icon.png" />
+        <form id="change-city-form">
+          <input id="city-input" type="text" />
+          <button id="change-city-submit" type="submit">Submit</button>
+        </form>
+      </div>
 
-      <h3 id="w-tomorrow">Tomorow</h3>
-      <div class="list-item-container" id="w-rain-tomorrow"></div>
+      <div id="loading">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div id="hide-on-loading">
+        <h3 id="w-today">Today</h3>
+        <div class="list-item-container" id="w-rain-today"></div>
 
-      <h3 id="w-day-after"></h3>
-      <div class="list-item-container" id="w-rain-day-after"></div>
+        <h3 id="w-tomorrow">Tomorow</h3>
+        <div class="list-item-container" id="w-rain-tomorrow"></div>
+
+        <h3 id="w-day-after"></h3>
+        <div class="list-item-container" id="w-rain-day-after"></div>
+      </div>
     </div>
 
     <script src="storage.js"></script>
